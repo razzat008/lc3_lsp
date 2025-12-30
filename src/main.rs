@@ -67,17 +67,19 @@
 //======================================================================
 
 #![allow(unused)]
+pub mod parser;
 
-use lsp_types::notification::PublishDiagnostics;
 use lsp_types::notification::DidChangeTextDocument;
 use lsp_types::notification::DidOpenTextDocument;
 use lsp_types::notification::Notification;
+use lsp_types::notification::PublishDiagnostics;
 use lsp_types::request::Request;
 use std::{any, error::Error};
 
 use anyhow::Result;
 use lsp_server::{Connection, Message, Request as ServerRequest, RequestId, Response};
 
+use lsp_server::ErrorCode as LspErrorCode;
 use lsp_types::{
     CompletionItem,
     CompletionItemKind,
